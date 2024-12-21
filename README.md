@@ -151,6 +151,41 @@ wait
  
 echo "Все задачи завершены."
 
+## Ввод/вывод и перенаправление
+
+ Чтение данных из файла input.txt
+ 
+cat input.txt
+
+ Перенаправление вывода команды wc -l в файл output.txt
+ 
+wc -l < input.txt > output.txt
+
+ Перенаправление ошибок выполнения команды ls для несуществующего файла в файл error.log
+ 
+ls non_existent_file > error.log 2>&1
+
+## Использование alias и автодополнение
+
+Функция для создания и настройки alias и демонстрации автодополнения
+setup_aliases_and_completions() {
+    # Создание и добавление alias ll для команды ls -la
+    alias ll='ls -la'
+    echo 'alias ll=\'ls -la\'' >> ~/.bashrc
+
+    # Демонстрация автодополнения команды cd
+    complete -W '~/Documents ~/Downloads' cd
+}
+
+Инициализация функции при запуске скрипта
+setup_aliases_and_completions
+
+Проверка работы alias и автодополнения
+echo "Текущие alias:"
+alias
+
+echo "\nДемонстрация автодополнения:\n"
+cd ~/Doc<Tab>
 
 
 
